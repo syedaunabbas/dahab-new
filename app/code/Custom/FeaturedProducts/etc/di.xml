@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Custom\FeaturedProducts\Api\ConfigResolverInterface" type="Custom\FeaturedProducts\Config\ConfigResolver"/>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="is_featured_completed" xsi:type="string">sales_order.is_featured_completed</item>
+                <item name="featured_expire_date" xsi:type="string">sales_order.featured_expire_date</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

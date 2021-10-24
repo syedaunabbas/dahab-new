@@ -1,0 +1,44 @@
+/**
+ * Common
+ */
+ & when (@media-common = true) {
+     .gold-rates-data {
+         border: 1px #505358 solid;
+         border-collapse: collapse;
+         margin: 0 auto;
+
+         thead {
+             background: #505358;
+             color: #fff;
+         }
+
+         th,
+         td {
+             padding: 10px 20px;
+             border: 1px #505358 solid;
+             text-align: center;
+         }
+     }
+}
+
+/**
+ * Desktop
+ */
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .gold-rates-data {
+        font-size: 18px;
+        th,
+        td {
+            padding: 10px;
+        }
+    }
+}
+
+
+/**
+ * Mobile
+ */
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+
+}

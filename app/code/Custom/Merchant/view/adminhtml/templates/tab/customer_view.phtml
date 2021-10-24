@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block \Custom\Merchant\Block\Adminhtml\CustomerEdit\Tab\View
+ */
+?>
+
+<div class="fieldset-wrapper customer-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Limit Seller Products') ?></span>
+    </div>
+    <?php echo $block->getChildHtml(); ?>
+    <input type="number" />
+</div>

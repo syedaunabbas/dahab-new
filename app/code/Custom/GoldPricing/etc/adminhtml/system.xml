@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="goldpricing" translate="label" sortOrder="10">
+            <label>Gold Pricing</label>
+        </tab>
+        <section id="goldpricing" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Gold Rates</label>
+            <tab>goldpricing</tab>
+            <resource>Gold_Pricing::gold_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Gold Pricing Configuration</label>                        
+                <field id="enable" translate="label" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Enable</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ounce_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Ounce gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+                <field id="14_carat_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>14 carat gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+                <field id="18_carat_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>18 carat gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+                <field id="21_carat_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>21 carat gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+                <field id="22_carat_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>22 carat gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+                <field id="24_carat_gold_rate" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>24 carat gold rate</label>
+                    <!-- <comment>This text will display on the frontend.</comment> -->
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

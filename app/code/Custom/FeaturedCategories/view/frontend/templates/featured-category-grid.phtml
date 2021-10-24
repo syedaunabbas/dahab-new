@@ -1,0 +1,69 @@
+<?php
+/**
+ * FeaturedCategories list template
+ *
+ * @var $block \Custom\FeaturedCategories\Block\FeaturedCategories
+ */
+
+// get store root level categories
+$_categories = $block->getCategoryCollection(true, 2);
+?>
+<?php if ($_categories): ?>
+    <?php
+    /** @var \Magento\Catalog\Helper\Image $_imageHelper */
+    $_imageHelper = $this->helper('Magento\Catalog\Helper\Image');
+
+    // get store ID
+    $storeCode     = $block->getStoreCode();
+    ?>
+
+    <div class="featured-category__grid">
+        <div class="featured-category__carousel owl-carousel">
+            <?php /** @var $_categories \Magento\Catalog\Model\Category */ ?>
+            <?php foreach ($_categories as $_subcategory): ?>
+                <a href="<?= /* @escapeNotVerified */ $_subcategory->getUrl() ?>" class="featured-category__item">
+                    <div class="featured-category__image">
+                        <canvas width="400" height="400"></canvas>
+                        <?php $categoryImageUrl = $_subcategory->getImageUrl('thumbnail') ?: $_imageHelper->getDefaultPlaceholderUrl('image'); ?>
+                        <img src="<?php echo $categoryImageUrl ?>"
+                             alt="<?= /* @escapeNotVerified */
+                             $_subcategory->getName() ?>"/>
+                    </div>
+                    <div class="featured-category__info">
+                        <!--<div class="featured-category__subtitle">WATCHES</div>-->
+                        <div class="featured-category__title"><?= $_subcategory->getName() ?></div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+<script>
+    require(['jquery', 'mgs/owlcarousel'],function($){
+        $(document).ready(function () {
+            var owl = $('.featured-category__carousel').owlCarousel({
+                items: 5,
+                nav: false,
+                dots: true,
+                <?php if($storeCode == 'ar'){
+                    echo 'rtl: true,';
+                };?>
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    },
+                    1200: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    });
+</script>
+<?php endif; ?>

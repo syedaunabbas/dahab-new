@@ -1,0 +1,27 @@
+<?php
+$block = $this->getLayout()->createBlock('\Custom\GoldPricing\Block\GoldRates');
+$store_currency = $block->getCurrencySymbol();
+?>
+
+<table class="gold-rates-data">
+    <thead>
+    <tr>
+        <th style="width: 15%;">14 carat gold rate</th>
+        <th style="width: 15%;">18 carat gold rate</th>
+        <th style="width: 15%;">20 carat gold rate</th>
+        <th style="width: 15%;">21 carat gold rate</th>
+        <th style="width: 15%;">24 carat gold rate</th>
+        <th style="width: 15%;">Ounce gold rate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><?php echo $block->getConfigValue('goldpricing/general/14_carat_gold_rate').' '.$store_currency; ?></td>
+        <td><?php echo $block->getConfigValue('goldpricing/general/18_carat_gold_rate').' '.$store_currency; ?></td>
+        <td><?php echo $block->getConfigValue('goldpricing/general/21_carat_gold_rate').' '.$store_currency; ?></td>
+        <td><?php echo $block->getConfigValue('goldpricing/general/22_carat_gold_rate').' '.$store_currency; ?></td>
+        <td><?php echo $block->getConfigValue('goldpricing/general/24_carat_gold_rate').' '.$store_currency; ?></td>
+        <td><?php echo $block->getConfigValue('goldpricing/general/ounce_gold_rate').' '.$store_currency; ?></td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * FeaturedCategories list template
+ *
+ * @var $block \Custom\FeaturedProducts\Block\FeaturedProducts
+ */
+
+// get featured product collection
+$_products = $block->getProductCollection();
+?>
+
+<?php if ($_products): ?>
+    <?php
+    /** @var \Magento\Catalog\Helper\Image $_imageHelper */
+    $_imageHelper = $this->helper('Magento\Catalog\Helper\Image');
+    $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+
+    // get store ID
+    $storeCode     = $block->getStoreCode();
+    ?>
+    <div class="featured-product__grid">
+        <div class="featured-product__carousel owl-carousel">
+            <?php /** @var $_products \Magento\Catalog\Model\Product */ ?>
+            <?php foreach ($_products as $_product): ?>
+                <div class="featured-product__item">
+                    <div class="featured-product__image">
+                        <?php $productImageUrl = $_imageHelper->init($_product,'product_base_image')->resize(585,585)->getUrl() ?: $_imageHelper->getDefaultPlaceholderUrl('image'); ?>
+                        <img src="<?php echo $productImageUrl ?>"
+                             alt="<?= /* @escapeNotVerified */
+                             $_product->getName() ?>"/>
+                    </div>
+                    <div class="featured-product__info">
+                        <div class="featured-product__name"><?= $_product->getName() ?></div>
+                        <div class="featured-product__price">
+                            <div class="price-box price-final_price">
+                        <span class="price-container price-final_price tax weee">
+                            <span class="price-wrapper ">
+                                <span class="price"><?= $abstractProductBlock->getProductPrice($_product) ?></span>
+                            </span>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="featured-product__actions">
+                            <a href="<?= $_product->getProductUrl() ?>">
+                            <button class="featured-product__cart" type="submit" title="Add to Cart">
+                                <span class="text"></span>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+<script>
+    require(['jquery', 'mgs/owlcarousel'],function($){
+        $(document).ready(function () {
+            var owl = $('.featured-product__carousel').owlCarousel({
+                items: 2,
+                nav: false,
+                dots: true,
+                <?php if($storeCode == 'ar'){
+                    echo 'rtl: true,';
+                };?>
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    768:{
+                        items:2
+                    },
+                    992:{
+                        items:2								},
+                    1200:{
+                        items:2
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+<?php endif; ?>
